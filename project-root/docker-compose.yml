@@ -1,0 +1,26 @@
+version: '3'
+services:
+  data_loader:
+    build: ./data_loader
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+  calculation:
+    build: ./calculation
+    ports:
+      - "5001:5001"
+    networks:
+      - app-network
+
+  result_output:
+    build: ./result_output
+    ports:
+      - "5002:5002"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
